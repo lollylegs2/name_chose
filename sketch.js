@@ -8,6 +8,9 @@ let acc = 0.2;
 let name = ""
 let alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
 "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+let button;
+
+
 let checkbox;
 var submitted = false;
 function setup() {
@@ -15,8 +18,14 @@ function setup() {
   textSize(15);
   checkbox = createCheckbox('Finished', false);
   checkbox.changed(myCheckedEvent);
+  button = createButton('clear');
+  button.position(76, 400);
+  button.mousePressed(clearName);
 }
 
+function clearName(){
+  name = "";
+}
 function draw() {
   background(100);
   noStroke();
@@ -55,19 +64,20 @@ text(name, width/2, height-10);
 
 function mousePressed() {
   if (mouseY < 300){
-  circleX = mouseX;
-  circleY = mouseY;
-  falling = false;
-  velocity = 0;
-  acc = 0;
+    circleX = mouseX;
+    circleY = mouseY;
+    falling = false;
+    velocity = 0;
+    acc = 0;
 }
 }
 
 function mouseDragged() {
+  if (mouseY < 300){
   if (circleY+circleR < 300){
     circleX = mouseX;
     circleY = mouseY;
-  }
+  }}
 
 }
 function mouseReleased() {
